@@ -109,6 +109,6 @@ public class Main {
                     text_area.setText("Error: " + er.getMessage());
                 }
             }
-        });
+        }); 
     }
 }
