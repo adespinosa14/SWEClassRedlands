@@ -5,4 +5,4 @@
 All of my programming homework assignments will be here. I will ***not*** include any required reading material, or any other supplimental here. All of the explanations for each programming assignment will be attached to what I submit on Canvas.
 
 ## How is this organized
-This is the main branch, and for simplicity sake only the .readme file will be here. For each homework assignment, in numerical order, will be opened as a new branch. 
+This is the main branch, and for simplicity sake only the .readme file will be here. Each homework assignment will be in numerical order in their respective folders. 
