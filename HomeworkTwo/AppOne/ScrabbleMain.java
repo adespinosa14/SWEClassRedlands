@@ -1,4 +1,11 @@
+/** Main File
+ * 
+ *  @author Andrew Espinosa
+ *  @version 1.0
+ * 
+ */
 public class ScrabbleMain {
+    
     public static void main(String[] args){
         System.out.println("Hello World");
     }
