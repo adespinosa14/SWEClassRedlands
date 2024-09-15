@@ -5,7 +5,9 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.ExceptionListener;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /** Main File
  * 
  *  @author Andrew Espinosa
@@ -86,43 +88,36 @@ public class ScrabbleMain {
         
         frame.add(panel);
         frame.setVisible(true);
-        
-        // Textfield Event listener
-        letter_text_field.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                // TODO Auto-generated method stub
-                System.out.println(letter_text_field.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                int text_length = letter_text_field.getText().length();
-                if(text_length > 7){
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                // TODO Auto-generated method stub
-            }
-        });
-        letter_text_field.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                System.out.println(letter_text_field.getText());
-            }
-        });
 
         // Button Clicked Method
         submit_button.addActionListener(new ActionListener(){
-            int text_length = letter_text_field.getText().length();
             public void actionPerformed(ActionEvent e){
-                
+
                 // Detect Whether the text field has exceeded 7 characters OR are invalid characters
-                // for(int i = 0; i < text_length - 1; i++){
-                //     if(letter_text_field){}
-                // }
-                System.out.println(text_length);
+                
+                int text_length = letter_text_field.getText().length();
+                String text = letter_text_field.getText();
+                if(text_length > 7){
+                    JOptionPane.showMessageDialog(frame, "Please Enter Only 7 Letters");
+                    letter_text_field.setText("");
+                }else{
+
+                    // Check if there are invalid characters
+                    char[] alphabet = {'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z'};
+                    for(int i = 0; i < text_length - 1; i++){
+                        if(alphabet.toString().contains(String.valueOf(text.charAt(i)))){
+                            JOptionPane.showMessageDialog(frame, "Invalid Character: \"" + text.charAt(i + 1) + "\". Please enter only characters from the English alphabet.");
+                            letter_text_field.setText("");
+                        }
+                    }
+
+                    // No Invalid Characters were Spotted
+
+                    
+
+                }
+                
+                System.out.println(text);
 
             }
 
