@@ -48,10 +48,10 @@ public class Tiles {
             for(int i = 0; i < length; i++){
                 for(int j = 0; j <= al_length - 1; j++){
                     if(word_setGetter().charAt(i) == alphabet[j]){
-                        System.out.println("Found Letter! No Error Located");
+                        // Character found in alphabet
                         break;
                     }else if(word_setGetter().charAt(i) != alphabet[j] && j == al_length - 1){
-                        System.out.println("J = " + j);
+                        //character NOT found in alphabet
                         JOptionPane.showMessageDialog(frame, "Invalid Character: \"" + word_setGetter().charAt(i) + "\". Please enter only characters from the English alphabet.");
                         text_field.setText("");
                         return true;
