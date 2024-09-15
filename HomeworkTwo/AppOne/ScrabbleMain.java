@@ -92,36 +92,15 @@ public class ScrabbleMain {
         // Button Clicked Method
         submit_button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-
-                // Detect Whether the text field has exceeded 7 characters OR are invalid characters
-                
-                int text_length = letter_text_field.getText().length();
-                String text = letter_text_field.getText();
-                if(text_length > 7){
-                    JOptionPane.showMessageDialog(frame, "Please Enter Only 7 Letters");
-                    letter_text_field.setText("");
-                }else{
-
-                    // Check if there are invalid characters
-                    char[] alphabet = {'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z'};
-                    for(int i = 0; i < text_length - 1; i++){
-                        if(alphabet.toString().contains(String.valueOf(text.charAt(i)))){
-                            JOptionPane.showMessageDialog(frame, "Invalid Character: \"" + text.charAt(i + 1) + "\". Please enter only characters from the English alphabet.");
-                            letter_text_field.setText("");
-                        }
+                Tiles text = new Tiles(letter_text_field.getText());
+                    // No Invalid Characters were Spotted
+                    if(text.check_error(frame, letter_text_field)){
+                        System.out.println("Error");
+                    } else{
+                        text.scramble(letter_text_field);
                     }
 
-                    // No Invalid Characters were Spotted
-
-                    
-
-                }
-                
-                System.out.println(text);
-
             }
-
         });
-
     }
 }
