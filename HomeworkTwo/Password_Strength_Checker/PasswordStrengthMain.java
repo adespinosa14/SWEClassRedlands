@@ -66,15 +66,15 @@ public class PasswordStrengthMain {
         panel.add(submit_button, constraints);
         
         // Result Text Area
-        JTextArea word_result = new JTextArea(8, 24);
-        word_result.setPreferredSize(new Dimension(100, 51));
-        word_result.setText("Strength Result");
+        JTextArea result = new JTextArea(8, 24);
+        result.setPreferredSize(new Dimension(100, 51));
+        result.setText("Strength Result");
         constraints.gridx = 4;
         constraints.gridy = 13;
         constraints.gridwidth = 4;
         constraints.gridheight = 4;
-        word_result.setEnabled(false);
-        panel.add(word_result, constraints);
+        result.setEnabled(false);
+        panel.add(result, constraints);
         
         frame.add(panel);
         frame.setVisible(true);
@@ -86,6 +86,7 @@ public class PasswordStrengthMain {
                     System.out.println("Error Found");
                 }else{
                     System.out.println("Success");
+                    System.out.println("New Password: " + password.passwordStrength(result));
                 }
             }
         });
