@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
+/** Determines the strength of passwords.
  * 
  * @author Andrew Espinosa
  * @Version 1.0
@@ -19,7 +19,7 @@ public class PasswordStrengthMain {
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 
-        // Fill the layout with placeholders
+        // Fill the layout with placeholder
         for (int row = 0; row < 25; row++) {
             for (int col = 0; col < 10; col++) {
                 constraints.gridx = col;
@@ -79,6 +79,12 @@ public class PasswordStrengthMain {
         frame.add(panel);
         frame.setVisible(true);
 
+        /** Creates event upon button press
+         * 
+         * @return Error OR Password Strength
+         * 
+         */
+        
         submit_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 Password password = new Password(letter_text_field.getText());

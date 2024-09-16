@@ -4,34 +4,48 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/**
+/** Object: The user's password
  * @author Andrew Espinosa
  * @version 1.0
 */
 
 public class Password{
     public String password;
+
+    /** Constructor for the class.
+     * @param The user's password.
+     */
     public Password(String password){  
         this.password = password;
     }
-
-    // Password Setter
+    
+    /** Sets the password to a new value.
+     * @param password
+     */
     public void setPassword(String password){
         this.password = password;
     }
-
-    // Password Getter
+    
+    /** Returns the user's password
+     * @return String of the user's password
+     */
     public String retrievPassword(){
         return this.password;
     }
-
+    
+    /** Returns the length of the user's password.
+     * @return int of the user's password length.
+     */
     public int passwordLength(){
         return password.length();
     }
-
-
+    
+    /** Checks for any errors within the password.
+     * @param Main document's frame.
+     * @param text_field in the Main file.
+     * @return Return whether there is an error.
+     */
     // Check For Error
-
     public Boolean checkError(JFrame frame, JTextField text_field){
 
         String text = retrievPassword();
@@ -53,6 +67,13 @@ public class Password{
         return false;
     }
 
+    
+    /** Determines the strength of the password. 
+     * 
+     * @param text_field in the Main file.
+     * @return Return the new String with only the repeated values.
+     * 
+     */
     // Check Password Strength
     public String passwordStrength(JTextArea text_area){
 
