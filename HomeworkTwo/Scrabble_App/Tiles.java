@@ -13,26 +13,49 @@ public class Tiles {
     public String word_set;
     public char[] alphabet = {'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f', 'G', 'g', 'H', 'h', 'I', 'i', 'J', 'j', 'K', 'k', 'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'Q', 'q', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'V', 'v', 'W', 'w', 'X', 'x', 'Y', 'y', 'Z', 'z'};
     
+    /** Initialize Tiles file
+     * 
+     * @param word_set
+     * 
+     */
     public Tiles(String word_set){
         this.word_set = word_set;
     }
 
-    // Build the word setter
+    /** Setter for word_set
+     * 
+     * @param word_set
+     */
+    
     public void word_setSetter(String word_set){
         this.word_set = word_set;
     }
 
-    // Build the word getter
+    /** Build the word getter
+     * 
+     * @return String of word_set contents
+     */
+   
     public String word_setGetter(){
         return this.word_set;
     }
 
-    // Return the word length
+    /** Return the word length
+     * 
+     * @return int of word_set length
+     */
+   
     public int length(){
         return this.word_set.length();
     }
 
-    // Check if there are any errors within the the word_set
+    /** Check if there are any errors within the the word_set
+     * 
+     * @param frame
+     * @param text_field
+     * @return Boolean of whether an error was located
+     */
+     
     public Boolean check_error(JFrame frame, JTextField text_field){
         int length = length();
 
@@ -62,7 +85,13 @@ public class Tiles {
 
         return false;
     }
-    // Return every possibility
+    
+    /** Return every possibility
+     * 
+     * @param text_field
+     * @return
+     */
+
     public String[] scramble(JTextField text_field){
         String[] array = {"Hello", "World"};
         
