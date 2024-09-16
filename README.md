@@ -2,7 +2,7 @@
 
 # Welcome to my Software Engineering Class!
 ## What will you see here?
-All of my programming homework assignments will be here. I will ***not*** include any required reading material, or any other supplimental here. All of the explanations for each programming assignment will be attached to what I submit on Canvas.
+All of my programming homework assignments will be here. I will ***not*** include any required reading material, or any other supplimental material here. Only what is required of through programming and documentation. Everything else will be attached to what I submit on Canvas.
 
 ## How is this organized
-This is the main branch, and for simplicity sake only the .readme file will be here. Each homework assignment will be in numerical order in their respective folders. 
+For simplicity sake, I will create a folder for each homework assignment. If there are multiple apps within one assignment on Canvas, each app and its repective documentation will be encapsulated within the same folder. Each app project will have its own folder. 
