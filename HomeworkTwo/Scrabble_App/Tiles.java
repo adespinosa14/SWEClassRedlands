@@ -1,8 +1,9 @@
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/**
+/** Create a Tile + Check for Errors + Rearrange the Tiles
  * 
  * @author Andrew Espinosa
  * @version 1.0
@@ -26,7 +27,6 @@ public class Tiles {
      * 
      * @param word_set
      */
-    
     public void word_setSetter(String word_set){
         this.word_set = word_set;
     }
@@ -88,13 +88,25 @@ public class Tiles {
     
     /** Return every possibility
      * 
-     * @param text_field
+     * @param word_result
      * @return
+     * 
      */
-
-    public String[] scramble(JTextField text_field){
-        String[] array = {"Hello", "World"};
+    public void scramble(JTextArea word_result, String word, String space){
         
-        return array;
+        if(word.length() == 0) {
+        	System.out.println(space + " ");
+        	word_result.append(space + "\n");
+        	return;
+        }
+        
+        for(int i = 0; i < word.length(); i++) {
+        	
+        	char letter = word.charAt(i);
+        	String combo = word.substring(0, i) + word.substring(i + 1);
+        	scramble(word_result, combo, space + letter);
+        	
+        }
+       
     }
 }

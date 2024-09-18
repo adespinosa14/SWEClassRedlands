@@ -88,7 +88,7 @@ public class Password{
             }
         }
 
-        int strLength = str.toString().length();
+        int strLength = str.toString().length() + 1;
 
         if(strLength <= 2){
             text_area.setText("The largest block in this password is: " + (strLength) + ".\nThis is a strong password.");

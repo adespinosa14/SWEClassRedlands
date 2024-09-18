@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /** Main File
  * 
@@ -72,18 +73,21 @@ public class ScrabbleMain {
         
         // Result Text Area
         JTextArea word_result = new JTextArea(8, 24);
-        word_result.setPreferredSize(new Dimension(100, 51));
-        word_result.setText("Words appear here");
+        word_result.setText("Words appear here: ");
         constraints.gridx = 5;
         constraints.gridy = 13;
-        constraints.gridwidth = 4;
-        constraints.gridheight = 4;
-        panel.add(word_result, constraints);
-        
+        constraints.gridwidth = 7;
+        constraints.gridheight = 7;
+        // Enable Scrolling to my JTextArea
+        JScrollPane sp = new JScrollPane(word_result); 
+        sp.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS ); 
+        panel.add(sp, constraints);
         frame.add(panel);
         frame.setVisible(true);
 
-        // Button Clicked Method
+        /** Button clicked method that returns every letter combination OR if there was an error spotted 
+         * 
+         */
         submit_button.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 Tiles text = new Tiles(letter_text_field.getText());
@@ -91,7 +95,7 @@ public class ScrabbleMain {
                     if(text.check_error(frame, letter_text_field)){
                         System.out.println("Error");
                     } else{
-                        text.scramble(letter_text_field);
+						text.scramble(word_result, letter_text_field.getText(), " ");
                     }
 
             }
