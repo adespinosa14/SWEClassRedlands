@@ -1,5 +1,3 @@
-package HomeworkThree;
-
 public class Item {
 	private String item;
 	private double cost;

@@ -1,5 +1,3 @@
-package HomeworkThree;
-
 public class Node {
 	private Item n;
 	private Node next;
