@@ -1,17 +1,25 @@
 import java.awt.EventQueue;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+
+/** Initialize Main
+ * 
+ * @author Andrew Espinosa
+ * @version 1.0
+ * 
+ */
 
 public class SalesListMain extends JFrame {
 
@@ -79,8 +87,8 @@ public class SalesListMain extends JFrame {
 		contentPane.add(quantity_text_field);
 		
 		// Quantity Label
-		JLabel quantity_label = new JLabel("Quantity");
-		quantity_label.setBounds(127, 73, 46, 14);
+		JLabel quantity_label = new JLabel("Quantity:");
+		quantity_label.setBounds(127, 73, 100, 14);
 		contentPane.add(quantity_label);
 		
 		// Submit Button
@@ -92,7 +100,7 @@ public class SalesListMain extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(127, 135, 193, 80);
+		scrollPane.setBounds(75, 135, 300, 80);
 		contentPane.add(scrollPane);
 		
 		// Text Area
@@ -103,27 +111,33 @@ public class SalesListMain extends JFrame {
 		// Result TextField
 		result_text_field = new JTextField();
 		result_text_field.setEditable(false);
+		result_text_field.setText("0");
 		result_text_field.setColumns(10);
 		result_text_field.setBounds(204, 230, 116, 20);
 		contentPane.add(result_text_field);
 		
 		// Total Sales Label
 		JLabel result_text_label = new JLabel("Total Sales:");
-		result_text_label.setBounds(127, 233, 67, 14);
+		result_text_label.setBounds(127, 233, 100, 14);
 		contentPane.add(result_text_label);
 		
+		/** Submit Button Pressed 
+		 * 
+		 * @return Pop-up window to input text + return its values
+		 * 
+		 */
 		submit_button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				
 				// Check if any of the text fields are empty
-				if(item_text_field.getText().isEmpty() || cost_text_field.getText().isEmpty() || quantity_text_field.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Please fill out all text fields.");
-					System.out.println("Ram");
-				}else {
-					// Check if the type is being set properly
-					Item item = new Item(item_text_field.getText(), Double.parseDouble(cost_text_field.getText()), Integer.parseInt(quantity_text_field.getText()));
-					text_area.append(item.getItem()  + " | $" + String.valueOf(item.getCost()) + " | " + String.valueOf(item.getQuantity()) + "\n");
+				Item item = new Item(item_text_field.getText(), cost_text_field.getText(), quantity_text_field.getText());
+				
+				if(item.checkError(item.getItem(), item.getCost(), item.getQuantity(), text_area) == false) {
+					item.addItem(text_area, item.getCost(), item.getItem(), item.getQuantity());
+					result_text_field.setText(item.totalCost(result_text_field.getText(), item.getCost(), item.getQuantity()));
 				}
+				
+				
 			}
 		});
 		
