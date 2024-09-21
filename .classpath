@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="HomeworkTwo/Scrabble_App/|HomeworkOne/WindowBuilder/|HomeworkTwo/Password_Strength_Checker/" kind="src" path=""/>
+	<classpathentry kind="src" path="HomeworkOne/WindowBuilder"/>
+	<classpathentry kind="src" path="HomeworkTwo/Password_Strength_Checker"/>
+	<classpathentry kind="src" path="HomeworkTwo/Scrabble_App"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
