@@ -12,6 +12,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/** WindowBuilder Class
+ * 
+ * @author Andrew Espinosa
+ * @version 1.0
+ * 
+ */
+
 public class WindowBuilder extends JFrame {
 
 	public static final long serialVersionUID = 1L;

@@ -2,35 +2,70 @@ package HomeworkFour;
 
 import javax.swing.JOptionPane;
 
+/** BigInteger Class
+ * 
+ * @apiNote A new data type that allows the user to add or modulus very large numbers
+ * @author Andrew Espinosa
+ * @version 1.0
+ * 
+ */
 public class BigInteger {
 	public String x;
 	public String y;
+	
+	/** BigInteger Initializer 
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	
 	public BigInteger(String x, String y) {
 		this.x = x;
 		this.y = y;
 	}
 	
+	/** Get X
+	 * 
+	 * @return String x
+	 */
 	
-	// Getters
 	public String getX() {
 		return x;
 	}
+	
+	/** Get Y
+	 * 
+	 * @return String y
+	 * 
+	 */
 	
 	public String getY() {
 		return y;
 	}
 	
-	// Setters
+	/** Set X
+	 * 
+	 * @param String x
+	 * 
+	 */
+
 	public void setX(String x) {
 		this.x = x;
 	}
 	
+	/** Set Y
+	 * 
+	 * @param String y
+	 * 
+	 */
 	public void setY(String y) {
 		this.y = y;
 	}
 	
-	// Add the integers
+	/** Add the large numbers
+	 * 
+	 * @return String
+	 */
 	public String addIntegers() {
 		
 		 // Get length
@@ -70,17 +105,11 @@ public class BigInteger {
         return result.reverse().toString(); 
 	}
 	
-	// Check for errors
-	public void checkError() {
-		try{
-			Integer.parseInt(x);
-			Integer.parseInt(y);
-		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-		}
-	}
-	
-	// Modulus the Integers
+	/** Modulus the numbers
+	 * 
+	 * @return String
+	 * 
+	 */
 	public String modIntegers() {
         // Initialize result
         int res = 0;
@@ -93,8 +122,29 @@ public class BigInteger {
         return String.valueOf(res);
 	}
 	
+	/** Check for Errors
+	 * 
+	 * @apiNote Checks if the Strings can be parsed as integers, otherwise it will tell the user they entered an invalid type
+	 * 
+	 */
+	
+	public void checkError() {
+		try{
+			Integer.parseInt(x);
+			Integer.parseInt(y);
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+		}
+	}
+	
+	/** Print out our BigInteger x and BigInteger y
+	 * 
+	 *	@return String	
+	 *
+	 */
+	
 	public String toString() {
-		return "";
+		return "x: " + x + " y: " + y;
 	}
 
 }
