@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
@@ -11,12 +12,19 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/** WindowBuilder Class
+ * 
+ * @author Andrew Espinosa
+ * @version 1.0
+ * 
+ */
+
 public class WindowBuilder extends JFrame {
 
 	public static final long serialVersionUID = 1L;
 	public JPanel contentPane;
-	public JTextField xTextField;
 	public JTextField yTextField;
+	public JTextField xTextField;
 	public JTextField resultTextField;
 	
 	public JRadioButton addRadioButton;
@@ -57,10 +65,10 @@ public class WindowBuilder extends JFrame {
 		mainLabel.setBounds(101, 47, 285, 14);
 		contentPane.add(mainLabel);
 		// X Text Field
-		xTextField = new JTextField();
-		xTextField.setBounds(101, 112, 285, 20);
-		contentPane.add(xTextField);
-		xTextField.setColumns(10);
+		yTextField = new JTextField();
+		yTextField.setBounds(101, 112, 285, 20);
+		contentPane.add(yTextField);
+		yTextField.setColumns(10);
 		
 		ButtonGroup btnGroup = new ButtonGroup();
 		btnGroup.add(addRadioButton);
@@ -71,13 +79,19 @@ public class WindowBuilder extends JFrame {
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				BigInteger num = new BigInteger(xTextField.getText(), yTextField.getText());
+				num.checkError();
+				System.out.println("Hello World");
 				// Determine which method is selected
 				if(addRadioButton.isSelected()) {
 					// Add Method
-					System.out.println("Add Enabled");
+					resultTextField.setText(num.addIntegers());
 				}else if(modRadioButton.isSelected()) {
 					// Modulus Method
+					resultTextField.setText(num.modIntegers());
 					System.out.println("Mod is enabled");
+				}else {
+					JOptionPane.showMessageDialog(null, "Please select an option - \"Add\" | \"Mod\"");
 				}
 			}
 		});
@@ -87,10 +101,10 @@ public class WindowBuilder extends JFrame {
 		submitButton.setBounds(198, 179, 89, 23);
 		contentPane.add(submitButton);
 		
-		yTextField = new JTextField();
-		yTextField.setBounds(101, 81, 285, 20);
-		contentPane.add(yTextField);
-		yTextField.setColumns(10);
+		xTextField = new JTextField();
+		xTextField.setBounds(101, 81, 285, 20);
+		contentPane.add(xTextField);
+		xTextField.setColumns(10);
 		
 		JLabel xLabel = new JLabel("X:");
 		xLabel.setHorizontalAlignment(SwingConstants.CENTER);
