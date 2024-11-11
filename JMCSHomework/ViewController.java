@@ -1,3 +1,4 @@
+package JMCSHomework;
 import java.awt.Color;
 import java.awt.ScrollPane;
 import java.awt.Dimension;
