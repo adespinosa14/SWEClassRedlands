@@ -108,7 +108,7 @@ public class Views {
 		Frame.add(Panel);
 		Frame.pack();
 		Frame.setVisible(true);
-		events();
+		AddItemEvent();
 		
 	}
 	
@@ -133,7 +133,7 @@ public class Views {
 		Frame.add(Panel);
 		Frame.pack();
 		Frame.setVisible(true);
-		events();
+		DeleteItemEvent();
 		
 	}
 	
@@ -150,11 +150,11 @@ public class Views {
 		submitViewList = new JButton("View Full List");
 		
 		FullList = new JTextArea();
-		FullList.setPreferredSize(new Dimension(300,350));
+		FullList.setPreferredSize(new Dimension(550,600));
 		FullList.setEditable(false);
 		
 		Panel = new JPanel();
-		Panel.setPreferredSize(new Dimension(360,400));
+		Panel.setPreferredSize(new Dimension(500,550));
 		Panel.add(ProjectTitle);
 		Panel.add(SKU);
 		Panel.add(SKUTF);
@@ -164,7 +164,8 @@ public class Views {
 		Frame.add(Panel);
 		Frame.pack();
 		Frame.setVisible(true);
-		events();
+		SubmitViewEvent();
+		SubmitItemEvent();
 	}
 	
 	// Events
@@ -200,71 +201,84 @@ public class Views {
 			}
 		});
 
-		//SUBMIT ADD ITEM 
+	}
+	
+	// Add Item
+	public static void AddItemEvent() 
+	{
 		submitAddItem.addActionListener(new ActionListener()
-				{
-					public void actionPerformed(ActionEvent e) 
-					{
-						System.out.println("Add Item");
-						try 
-						{
-							Textbook textbook = new Textbook(SKUTF.getText(), TitleTF.getText(), Integer.valueOf(PriceTF.getText()), Integer.valueOf(QuantityTF.getText()));
-							TextbookDB db = new TextbookDB();
-							db.AddBook(textbook);
-							
-						}
-						catch(Exception err) 
-						{
-							System.out.println("Error: " + err.getLocalizedMessage());
-						}
-					}
-				});
-		
-		//DELETE ITEM
-		submitDeleteItem.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
 			{
-				public void actionPerformed(ActionEvent e) 
+				System.out.println("Add Item");
+				try 
 				{
-					System.out.println("Deleted Line");
-					try 
-					{
-						
-						TextbookDB db = new TextbookDB();
-						File file = new File("TextbookDB.txt");
-						file.createNewFile();
-						db.DeleteLine(SKUTF.getText(), file);
-						
-					}
-					catch(Exception err) 
-					{
-						System.out.println("Error: " + err.getLocalizedMessage());
-					}
+					Textbook textbook = new Textbook(SKUTF.getText(), TitleTF.getText(), Integer.valueOf(PriceTF.getText()), Integer.valueOf(QuantityTF.getText()));
+					TextbookDB db = new TextbookDB();
+					db.AddBook(textbook);
+					
 				}
-			});
-		
-		//View Full List
-		submitViewList.addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent e) 
+				catch(Exception err) 
 				{
-					System.out.println("Print Full List");
+					System.out.println("Error: " + err.getLocalizedMessage());
+				}
+			}
+		});
+	}
+	
+	// Delete Event
+	public static void DeleteItemEvent() 
+	{
+		submitDeleteItem.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.out.println("Deleted Line");
+				try 
+				{
+					
 					TextbookDB db = new TextbookDB();
 					File file = new File("TextbookDB.txt");
-					FullList.setText(db.ReadFile(file)); 
+					file.createNewFile();
+					db.DeleteLine(SKUTF.getText(), file);
+					
 				}
-			});
-		
+				catch(Exception err) 
+				{
+					System.out.println("Error: " + err.getLocalizedMessage());
+				}
+			}
+		});
+	
+	}
+	
+	// Submit Item Event
+	public static void SubmitItemEvent() 
+	{
 		submitViewItem.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.out.println("Print Item");
+				TextbookDB db = new TextbookDB();
+				File file = new File("TextbookDB.txt");
+				FullList.setText(db.ReadFile(file)); 
+			}
+		});
+	}
+	
+	//Submit Full List
+	public static void SubmitViewEvent() {
+		submitViewList.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
 				System.out.println("Print Full List");
 				TextbookDB db = new TextbookDB();
 				File file = new File("TextbookDB.txt");
-				FullList.setText(db.ReadFile(file)); 
+				FullList.append(db.ReadFile(file)); 
 			}
 		});
-
 	}
 	
 }

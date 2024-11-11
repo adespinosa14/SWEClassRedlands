@@ -21,8 +21,7 @@ public class TextbookDB {
 		
 		while(input.hasNext()) 
 		{
-			System.out.println(input.nextLine());
-			fullList += input.nextLine();
+			fullList = fullList + input.nextLine() + "\n";
 		}
 		
 		input.close();
@@ -33,6 +32,31 @@ public class TextbookDB {
 		}
 		
 		return fullList;
+	}
+	
+	public String FindLine(String SKU, File textbook_file) 
+	{
+		
+		String line = "";
+		try 
+		{
+			Scanner input = new Scanner(textbook_file);
+			while(input.hasNext()) 
+			{
+				String search = input.nextLine();
+				if(search.contains(SKU)) 
+				{
+					line = line + search + "\n";
+				}else 
+
+				System.out.println(input.next());
+			}
+		
+		}catch(Exception e) {
+			System.out.println("Error:" + e.getLocalizedMessage());
+		}
+		
+		return line;
 	}
 	
 	public void DeleteLine(String SKU, File textbook_file) 
@@ -76,7 +100,7 @@ public class TextbookDB {
 			{
 				System.out.println("File Already Exists");
 				System.out.println("File Created: " + textbook_file.getName());
-				String textbook_string = ("SKU: " + textbook.GetSKU() + "| Title: " + textbook.GetTitle() + "| Price: " + textbook.GetPrice() + "| Quantity: " + textbook.GetQuantity() + "\n");
+				String textbook_string = ("\nSKU: " + textbook.GetSKU() + "| Title: " + textbook.GetTitle() + "| Price: " + textbook.GetPrice() + "| Quantity: " + textbook.GetQuantity() + "\n");
 				FileWriter wr = new FileWriter("TextbookDB.txt", true);
 				wr.write(textbook_string);
 				wr.close();

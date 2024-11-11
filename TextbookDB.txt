@@ -1,1 +1,4 @@
 hijklmnop| Title: To Kill a Mockingbird| Price: 24| Quantity: 12
+SKU: oiadshfj| Title: My Title| Price: 21| Quantity: 4
+
+SKU: opifjha| Title: Another Title| Price: 43| Quantity: 21
