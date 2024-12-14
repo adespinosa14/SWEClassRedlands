@@ -39,7 +39,7 @@ public class Type_B_GameObeject extends GameObject implements KeyListener{
 			break;
 			case Direction.DOWN:
 				setY(getY() + getVelocity());
-				if(getY() + iconHeight > canvasHeight) 
+				if(getY() + iconHeight > canvasHeight - 200) 
 				{
 					setDirection(Direction.LEFT);
 				}
@@ -64,7 +64,22 @@ public class Type_B_GameObeject extends GameObject implements KeyListener{
 	}
 
 	public void setImage() {
-		currentImage = 0;
+		switch(getDirection()) 
+		{
+			case Direction.UP:
+				currentImage = 0;
+				break;
+			case Direction.DOWN:
+				currentImage = 1;
+				break;
+			case Direction.LEFT:
+				currentImage = 2;
+				break;
+			case Direction.RIGHT:
+				currentImage = 3;
+				break;
+			default:break;
+		}
 	}
 
 

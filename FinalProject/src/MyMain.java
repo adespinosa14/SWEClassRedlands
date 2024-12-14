@@ -2,7 +2,7 @@ package FinalProject.src;
 
 public class MyMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 
 		// TASK 1: CREATE A CANVAS FOR ANIMATION
 		Canvas canvas = new Canvas();
@@ -25,6 +25,11 @@ public class MyMain {
 		objB.setVelocity(10);
 		canvas.addKeyListener(objB);
 		canvas.addGameObject(objB);
+		
+		Type_C_GameObject objC = new Type_C_GameObject(200,400);
+		objC.setVelocity(10);
+		canvas.addKeyListener(objC);
+		canvas.addGameObject(objC);
 	}
 
 }
