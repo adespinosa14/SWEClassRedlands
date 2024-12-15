@@ -8,11 +8,12 @@ import javax.swing.ImageIcon;
 
 //GAME OBJECT OF TYPE D REQUIRES A KEY LISTENER
 public class Type_D_GameObject extends GameObject implements KeyListener {
-
+	Type_A_GameObject objA;
+	
   public Type_D_GameObject(int x, int y) {
     super(x, y);
     setDirection(Direction.NONE);
-    
+    setPlayerStatus(true);
     imageList = new LinkedList<Icon>();
     imageList.add(new ImageIcon("FinalProject/images/Type_D_Up.png"));
     imageList.add(new ImageIcon("FinalProject/images/Type_D_Down.png"));
@@ -81,29 +82,37 @@ public class Type_D_GameObject extends GameObject implements KeyListener {
 	        break;
 	    }
 	  }
-
   public void keyTyped(KeyEvent e) {
   }
 
   public void keyReleased(KeyEvent e) {
-    if (e.getKeyCode() != KeyEvent.VK_TAB) {
-      setDirection(Direction.NONE);
-    }
+	  if(getPlayerStatus() == true) 
+	  {
+		if (e.getKeyCode() != KeyEvent.VK_TAB) {
+		   setDirection(Direction.NONE);
+		 }
+	  }
   }
 
   public void keyPressed(KeyEvent e) {
-    if (e.getKeyCode() == KeyEvent.VK_UP) {
-      setDirection(Direction.UP);
-    }
-    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      setDirection(Direction.DOWN);
-    }
-    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      setDirection(Direction.LEFT);
-    }
-    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      setDirection(Direction.RIGHT);
-    }
+	  if(getPlayerStatus() == true)
+	  {
+	    if (e.getKeyCode() == KeyEvent.VK_UP) {
+	      setDirection(Direction.UP);
+	    }
+	    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+	      setDirection(Direction.DOWN);
+	    }
+	    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+	      setDirection(Direction.LEFT);
+	    }
+	    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+	      setDirection(Direction.RIGHT);
+	    }
+	    if (e.getKeyCode() == KeyEvent.VK_TAB) {
+	        System.out.println("Tab Pressed");
+	      }
+	  }
   }
 
 }

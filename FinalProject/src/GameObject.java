@@ -1,4 +1,6 @@
 package FinalProject.src;
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.util.List;
@@ -13,7 +15,8 @@ public abstract class GameObject {
 	private int y;
 	private int velocity;
 	private int direction;
-
+	private boolean playerStatus;
+	
 	//EACH GAME OBJECT CAN HAVE A COLLECTION OF IMAGES
 	protected List<Icon> imageList;
 	protected int currentImage; 
@@ -21,12 +24,19 @@ public abstract class GameObject {
 	public GameObject(int x, int y) {
 		this.x = x;
 		this.y = y;
+		playerStatus = false;
 		velocity = 0;
 		currentImage = 0;
 	}
 
 	public void draw(Component c, Graphics g) {
 		imageList.get(currentImage).paintIcon(c, g, x, y);
+		if(playerStatus == true) {
+			int thickness = 1;
+			Color red = Color.red;
+			g.setColor(red);
+	        g.drawRect(x + thickness / 2, y + thickness / 2, getCurrentImage().getIconWidth() - thickness, getCurrentImage().getIconHeight() - thickness);
+		}
 	}
 
 	// SETTERS AND GETTERS
@@ -65,6 +75,14 @@ public abstract class GameObject {
 
 	public Icon getCurrentImage() {
 		return imageList.get(currentImage);
+	}
+	
+	public boolean getPlayerStatus() {
+		return playerStatus;
+	}
+
+	public void setPlayerStatus(boolean playerStatus) {
+		this.playerStatus = playerStatus;
 	}
 	
 	//ABSTRACT METHODS

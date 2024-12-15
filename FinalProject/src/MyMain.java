@@ -1,5 +1,8 @@
 package FinalProject.src;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 public class MyMain {
 
 	public static void main(String[] args){
@@ -30,6 +33,18 @@ public class MyMain {
 		objC.setVelocity(10);
 		canvas.addKeyListener(objC);
 		canvas.addGameObject(objC);
+		
+		PlayerStatusAdapter changePlayer = new PlayerStatusAdapterImp(objA, objB, objC, user);
+		
+		canvas.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_TAB) {
+			        System.out.println("Tab Pressed!!!");
+			        changePlayer.changePlayerStatus();
+			      }
+			}
+		});
+		
 	}
 
 }

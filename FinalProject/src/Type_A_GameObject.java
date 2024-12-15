@@ -11,7 +11,7 @@ public class Type_A_GameObject extends GameObject implements KeyListener{
 	public Type_A_GameObject(int x, int y) {
 		super(x, y);
 		setDirection(Direction.UP);
-		
+		setPlayerStatus(false);
 		imageList = new LinkedList<Icon>();
 		imageList.add(new ImageIcon("FinalProject/images/Type_A_Up.png"));
 		imageList.add(new ImageIcon("FinalProject/images/Type_A_Down.png"));
@@ -56,19 +56,36 @@ public class Type_A_GameObject extends GameObject implements KeyListener{
 		
 	}
 
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void keyTyped(KeyEvent e) {}
 
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(getPlayerStatus() == true)
+		  {
+		    if (e.getKeyCode() == KeyEvent.VK_UP) {
+		      setDirection(Direction.UP);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+		      setDirection(Direction.DOWN);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		      setDirection(Direction.LEFT);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		      setDirection(Direction.RIGHT);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_TAB) {
+		        System.out.println("Tab Pressed");
+		      }
+		  }
 	}
 
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(getPlayerStatus() == true) 
+		{
+		    if (e.getKeyCode() != KeyEvent.VK_TAB) {
+		        setDirection(Direction.NONE);
+		      }
+		}
 	}
 
 }

@@ -13,6 +13,7 @@ public class Type_C_GameObject extends GameObject implements KeyListener
 	public Type_C_GameObject(int x, int y) 
 	{
 		super(x, y);
+		setPlayerStatus(false);
 		setDirection(Direction.LEFT);
 		imageList = new LinkedList<Icon>();
 		imageList.add(new ImageIcon("FinalProject/images/Type_C_Left.png"));
@@ -23,8 +24,6 @@ public class Type_C_GameObject extends GameObject implements KeyListener
 	{
 		Icon icon = getCurrentImage();
 		int iconWidth	 = icon.getIconWidth();
-		int iconHeight = icon.getIconHeight();
-		int canvasHeight = (int) c.getSize().getHeight();
 		int canvasWidth	 = (int) c.getSize().getWidth();
 		switch(getDirection()) 
 		{
@@ -59,24 +58,36 @@ public class Type_C_GameObject extends GameObject implements KeyListener
 		}
 	}
 	
-	public void playerState() 
-	{
-		
+	public void keyTyped(KeyEvent e) {}
+
+	public void keyPressed(KeyEvent e) {
+		if(getPlayerStatus() == true)
+		  {
+		    if (e.getKeyCode() == KeyEvent.VK_UP) {
+		      setDirection(Direction.UP);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+		      setDirection(Direction.DOWN);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		      setDirection(Direction.LEFT);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		      setDirection(Direction.RIGHT);
+		    }
+		    if (e.getKeyCode() == KeyEvent.VK_TAB) {
+		        System.out.println("Tab Pressed");
+		      }
+		  }
 	}
 
-	public void keyTyped(KeyEvent e) 
-	{
-		
-	}
-
-	public void keyPressed(KeyEvent e) 
-	{
-		
-	}
-
-	public void keyReleased(KeyEvent e) 
-	{
-		
+	public void keyReleased(KeyEvent e) {
+		if(getPlayerStatus() == true) 
+		{
+		    if (e.getKeyCode() != KeyEvent.VK_TAB) {
+		        setDirection(Direction.NONE);
+		      }
+		}
 	}
 
 }
