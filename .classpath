@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="HomeworkOne/WindowBuilder"/>
 	<classpathentry kind="src" path="HomeworkTwo/Password_Strength_Checker"/>
 	<classpathentry kind="src" path="HomeworkTwo/Scrabble_App"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
